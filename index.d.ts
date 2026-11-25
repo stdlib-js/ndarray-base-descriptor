@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,16 +16,26 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { Collection } from '@stdlib/types/array';
+import { DataType, Order, Shape, Strides, Descriptor } from '@stdlib/types/ndarray';
+import { Buffer } from 'buffer';
 
 /**
-* Create a plain object describing how to interpret a data buffer as an n-dimensional array.
+* Returns a plain object describing how to interpret a data buffer as an n-dimensional array.
 *
-* @module @stdlib/ndarray-base-descriptor
+* @param dtype - data type
+* @param buffer - data buffer
+* @param shape - array shape
+* @param strides - array strides
+* @param offset - index offset
+* @param order - specifies whether an array is row-major (C-style) or column-major (Fortran-style)
+* @returns ndarray descriptor
 *
 * @example
-* var descriptor = require( '@stdlib/ndarray-base-descriptor' );
-*
 * var buffer = [ 1, 2, 3, 4, 5, 6 ];
 * var shape = [ 3, 2 ];
 * var strides = [ 2, 1 ];
@@ -34,12 +44,9 @@
 * var out = descriptor( 'generic', buffer, shape, strides, offset, 'row-major' );
 * // returns {...}
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function descriptor( dtype: DataType, buffer: Collection | Buffer, shape: Shape, strides: Strides, offset: number, order: Order ): Descriptor;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = descriptor;
